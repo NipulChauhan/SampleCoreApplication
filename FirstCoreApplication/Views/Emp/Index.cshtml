@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FirstCoreApplication.Models.View_Models.EmployeeViewModels>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobileNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="firstname">
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td class="lastname">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeDetailsID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EmployeeDetailsID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeDetailsID" class="delete">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $(".delete").click(function () {
+        var first = $(".delete").last().parents("tr").find(".firstname").text().trim();
+        var last = $(".delete").last().parents("tr").find(".lastname").text().trim();
+        if (confirm("Are you sure, You want to delete '" + first + " " + last + "' Employee?")) {
+            return true;
+        }
+        return false;
+    });
+</script>

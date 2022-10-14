@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FirstCoreApplication.Models.EmployeeDepartment>
+@{
+    ViewData["Title"] = "Department";
+}
+
+<h1>Department</h1>
+
+<p>
+    @*<a asp-controller="Home" asp-action="CreateEmployee">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @*<a asp-page="./Edit" asp-route-id="@item.DepartmentID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.DepartmentID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.DepartmentID">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
